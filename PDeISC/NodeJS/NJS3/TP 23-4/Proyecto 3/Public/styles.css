@@ -1,0 +1,196 @@
+/* =========================================
+   RESET Y VARIABLES (Mantenemos la paleta pro)
+   ========================================= */
+:root {
+    --primary: #2563eb;
+    --primary-hover: #1d4ed8;
+    --dark: #1e293b;
+    --light-bg: #f1f5f9;
+    --white: #ffffff;
+    --text: #0f172a;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    padding: 20px;
+    background-color: var(--light-bg);
+    color: var(--text);
+    transition: background 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* =========================================
+   NAVEGACIÓN (Tipo Píldora)
+   ========================================= */
+nav {
+    display: flex;
+    flex-wrap: wrap; /* Clave para responsive: baja los botones si no entran */
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    background: var(--dark);
+    padding: 10px;
+    border-radius: 50px;
+    box-shadow: var(--shadow);
+}
+
+button {
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.1); /* Botones nav más sutiles */
+    color: #94a3b8;
+    border: none;
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+/* Estilo para los botones de acción dentro de las secciones */
+.seccion button {
+    background: var(--dark);
+    color: white;
+    border-radius: 8px;
+    min-width: 100px;
+}
+
+.seccion button:hover {
+    background: var(--primary);
+    transform: translateY(-1px);
+}
+
+/* =========================================
+   CONTENEDORES (SECCIONES SPA)
+   ========================================= */
+.seccion {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 700px;
+    min-height: 250px;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra todo el contenido interno */
+    gap: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+.oculto {
+    display: none !important;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: var(--dark);
+    border-bottom: 2px solid var(--light-bg);
+    padding-bottom: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+/* =========================================
+   COMPONENTES ESPECÍFICOS
+   ========================================= */
+
+/* Inputs */
+input[type="number"] {
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px; /* 16px evita el zoom automático en iPhone */
+    width: 100%;
+    max-width: 200px;
+    text-align: center;
+}
+
+/* Galería Grid Responsiva */
+#fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 12px;
+    width: 100%;
+}
+
+#fotos img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e2e8f0;
+    transition: transform 0.2s;
+}
+
+#fotos img:hover {
+    transform: scale(1.05);
+}
+
+/* Reloj y Contador */
+#numeroContador, #horaActual {
+    font-weight: 800;
+    color: var(--primary);
+    margin: 10px 0;
+}
+
+#numeroContador { font-size: 64px; }
+#horaActual { font-size: 40px; font-family: 'Courier New', monospace; }
+
+/* Barra de Info inferior */
+.info-hijos {
+    margin-top: 20px;
+    padding: 15px 25px;
+    background: var(--dark);
+    color: #fff;
+    border-radius: 12px;
+    text-align: center;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: var(--shadow);
+}
+
+/* =========================================
+   MOBILE ADJUSTMENTS (Media Queries)
+   ========================================= */
+@media (max-width: 500px) {
+    body { padding: 10px; }
+    
+    nav {
+        border-radius: 15px;
+        width: 100%;
+    }
+    
+    button {
+        flex: 1 1 40%; /* Dos botones por fila en móvil si es necesario */
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .seccion {
+        padding: 20px;
+    }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

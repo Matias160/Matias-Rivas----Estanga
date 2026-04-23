@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto 3 - Contar Hijos</title>
+    <link rel="stylesheet" href="Public/styles.css">
+</head>
+<body>
+    <h1>Proyecto 3 — Contar hijos del DOM</h1>
+
+    <nav>
+        <button onclick="mostrarSeccion('inicio')">Inicio</button>
+        <button onclick="mostrarSeccion('galeria')">Galería</button>
+        <button onclick="mostrarSeccion('calculadora')">Calculadora</button>
+        <button onclick="mostrarSeccion('contador')">Contador</button>
+        <button onclick="mostrarSeccion('reloj')">Reloj</button>
+    </nav>
+
+    <!-- INICIO -->
+    <div id="inicio" class="seccion">
+        <h2>Inicio</h2>
+        <p>Bienvenido al proyecto 3.</p>
+        <p>Hacé click en cualquier sección para contar sus hijos.</p>
+        <button onclick="cambiarFondo()">Cambiar fondo</button>
+        <button onclick="contarHijos('inicio')">Contar hijos de Inicio</button>
+    </div>
+
+    <!-- GALERIA -->
+    <div id="galeria" class="seccion oculto">
+        <h2>Galería</h2>
+        <button onclick="agregarFoto()">Agregar foto</button>
+        <button onclick="contarHijos('galeria')">Contar hijos de Galería</button>
+        <div id="fotos"></div>
+    </div>
+
+    <!-- CALCULADORA -->
+    <div id="calculadora" class="seccion oculto">
+        <h2>Calculadora</h2>
+        <input type="number" id="num1" placeholder="Número 1"/>
+        <input type="number" id="num2" placeholder="Número 2"/>
+        <button onclick="calcular('suma')">Sumar</button>
+        <button onclick="calcular('resta')">Restar</button>
+        <button onclick="contarHijos('calculadora')">Contar hijos de Calculadora</button>
+        <p id="resultado"></p>
+    </div>
+
+    <!-- CONTADOR -->
+    <div id="contador" class="seccion oculto">
+        <h2>Contador</h2>
+        <h3 id="numeroContador">0</h3>
+        <button onclick="contar(1)">+1</button>
+        <button onclick="contar(-1)">-1</button>
+        <button onclick="resetContador()">Reset</button>
+        <button onclick="contarHijos('contador')">Contar hijos de Contador</button>
+    </div>
+
+    <!-- RELOJ -->
+    <div id="reloj" class="seccion oculto">
+        <h2>Reloj</h2>
+        <h3 id="horaActual">--:--:--</h3>
+        <button onclick="iniciarReloj()">Iniciar</button>
+        <button onclick="detenerReloj()">Detener</button>
+        <button onclick="contarHijos('reloj')">Contar hijos de Reloj</button>
+    </div>
+
+    <!-- INFO HIJOS -->
+    <div id="info-hijos" class="info-hijos oculto">
+        <span id="texto-hijos"></span>
+    </div>
+
+    <script src="Public/script.js"></script>
+</body>
+</html>

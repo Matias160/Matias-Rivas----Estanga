@@ -1,0 +1,208 @@
+/* =========================================
+   VARIABLES Y CONFIGURACIÓN BASE
+   ========================================= */
+:root {
+    --accent: #2563eb;          /* Azul de la pestaña activa */
+    --accent-hover: #1d4ed8;
+    --dark-bg: #1e293b;         /* Fondo del NAV y botones */
+    --bg-app: #dbeafe;          /* Celeste suave del fondo */
+    --white: #ffffff;
+    --text-dark: #1e293b;
+    --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+* {
+    box-sizing: border-box; /* Evita que el padding rompa el ancho */
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-app);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    transition: background 0.5s ease;
+}
+
+/* =========================================
+   NAVEGACIÓN (ESTILO PÍLDORA)
+   ========================================= */
+nav {
+    display: flex;
+    flex-wrap: nowrap;    /* Mantiene los botones en una sola línea */
+    overflow-x: auto;     /* Permite scroll lateral en celulares */
+    gap: 8px;
+    background: var(--dark-bg);
+    padding: 10px;
+    border-radius: 50px;
+    margin-bottom: 25px;
+    position: sticky;     /* Se queda arriba al hacer scroll */
+    top: 10px;
+    z-index: 100;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    max-width: 100%;
+}
+
+/* Ocultar barra de scroll en el menú para que se vea limpio */
+nav::-webkit-scrollbar {
+    display: none;
+}
+
+nav button {
+    padding: 10px 22px;
+    background: transparent;
+    color: #94a3b8;
+    border: none;
+    border-radius: 25px;
+    white-space: nowrap;  /* Evita que el texto se parta en dos líneas */
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+nav button.active {
+    background: var(--accent);
+    color: white;
+}
+
+nav button:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* =========================================
+   CONTENEDOR DE SECCIONES (SPA)
+   ========================================= */
+.seccion {
+    display: none;        /* Oculto por defecto */
+    width: 100%;
+    max-width: 850px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    min-height: 350px;
+    margin-bottom: 20px;
+    animation: fadeIn 0.4s ease-out;
+}
+
+/* Cuando la sección tiene la clase 'activa', se muestra */
+.seccion.activa {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+h1, h2 {
+    color: var(--text-dark);
+    margin-top: 0;
+}
+
+/* =========================================
+   BOTONES DE ACCIÓN Y FORMULARIOS
+   ========================================= */
+.botones-accion, .botones {
+    display: grid;
+    /* Rejilla automática: mínimo 140px por botón */
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    width: 100%;
+    margin: 20px 0;
+}
+
+button:not(nav button) {
+    padding: 12px 18px;
+    background: var(--dark-bg);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+button:not(nav button):hover {
+    background: var(--accent);
+    transform: translateY(-2px);
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+/* =========================================
+   ELEMENTOS MULTIMEDIA (FOTOS Y TABLAS)
+   ========================================= */
+#fotos {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 15px;
+    width: 100%;
+    margin-top: 20px;
+}
+
+img {
+    max-width: 100%;      /* No se sale de la pantalla */
+    height: auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    display: block;       /* Permite scroll si la tabla es muy ancha */
+    overflow-x: auto;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+}
+
+th { background: var(--dark-bg); color: white; }
+
+/* =========================================
+   RESPONSIVE (AJUSTES PARA MÓVIL)
+   ========================================= */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    nav {
+        border-radius: 15px;
+        width: 100%;
+    }
+
+    .seccion {
+        padding: 20px;
+        width: 98%;
+        border-radius: 18px;
+    }
+
+    /* En celulares muy chicos, botones de 2 en 2 */
+    .botones-accion {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    h1 { font-size: 1.5rem; }
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

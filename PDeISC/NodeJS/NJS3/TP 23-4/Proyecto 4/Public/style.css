@@ -1,0 +1,105 @@
+:root {
+    --bg-color: #f4f7f6;
+    --accent-color: #2563eb;
+    --terminal-bg: #0d1117;
+    --terminal-text: #4ade80;
+    --text-main: #334155;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 20px; /* Reducido para móviles */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra el contenido en pantallas grandes */
+}
+
+h1 {
+    width: 100%;
+    max-width: 900px;
+    font-size: 1.8rem;
+    border-left: 5px solid var(--accent-color);
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+/* CONTENEDOR DE BOTONES RESPONSIVE */
+.botones {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones bajen si no entran */
+    gap: 10px;
+    margin-bottom: 25px;
+    width: 100%;
+    max-width: 900px;
+    justify-content: flex-start;
+}
+
+button {
+    flex: 1 1 auto; /* Los botones crecen para llenar el espacio, pero mantienen su tamaño base */
+    min-width: 120px; /* Evita que se vuelvan demasiado pequeños */
+    padding: 12px;
+    background: #1e293b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* SECCIÓN DE LINKS Y LOG */
+#links, #log {
+    width: 100%;
+    max-width: 900px;
+    box-sizing: border-box; /* Asegura que el padding no rompa el ancho */
+}
+
+#links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+#log {
+    margin-top: 20px;
+    padding: 20px;
+    background: var(--terminal-bg);
+    color: var(--terminal-text);
+    border-radius: 10px;
+    font-family: monospace;
+    font-size: 0.85rem;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* MEDIA QUERIES PARA MÓVILES */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.4rem;
+    }
+
+    .botones {
+        gap: 8px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+
+    #log {
+        font-size: 0.75rem; /* Letra más chica en la terminal para que no se corte tanto */
+    }
+}

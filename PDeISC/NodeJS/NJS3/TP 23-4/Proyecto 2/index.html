@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Proyecto 2 - Navegación</title>
+    <link rel="stylesheet" href="Public/styles.css">
+</head>
+<body>
+    <nav>
+        <button onclick="mostrarSeccion('inicio')">Inicio</button>
+        <button onclick="mostrarSeccion('galeria')">Galería</button>
+        <button onclick="mostrarSeccion('calculadora')">Calculadora</button>
+        <button onclick="mostrarSeccion('contador')">Contador</button>
+        <button onclick="mostrarSeccion('reloj')">Reloj</button>
+    </nav>
+
+    <div id="inicio" class="seccion">
+        <h2>Inicio</h2>
+        <p>Bienvenido. Hacé click en los botones para navegar.</p>
+        <button onclick="cambiarFondo()">Cambiar fondo</button>
+    </div>
+
+    <div id="galeria" class="seccion oculto">
+        <h2>Galería</h2>
+        <button onclick="agregarFoto()">Agregar foto</button>
+        <div id="fotos"></div>
+    </div>
+
+    <div id="calculadora" class="seccion oculto">
+        <h2>Calculadora</h2>
+        <input type="number" id="num1" placeholder="Número 1"/>
+        <input type="number" id="num2" placeholder="Número 2"/>
+        <button onclick="calcular('suma')">Sumar</button>
+        <button onclick="calcular('resta')">Restar</button>
+        <p id="resultado"></p>
+    </div>
+
+    <div id="contador" class="seccion oculto">
+        <h2>Contador</h2>
+        <h3 id="numeroContador">0</h3>
+        <button onclick="contar(1)">+1</button>
+        <button onclick="contar(-1)">-1</button>
+        <button onclick="resetContador()">Reset</button>
+    </div>
+
+    <div id="reloj" class="seccion oculto">
+        <h2>Reloj</h2>
+        <h3 id="horaActual"></h3>
+        <button onclick="iniciarReloj()">Iniciar</button>
+        <button onclick="detenerReloj()">Detener</button>
+    </div>
+
+    <script src="Public/script.js"></script>
+</body>
+</html>

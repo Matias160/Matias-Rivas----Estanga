@@ -1,0 +1,102 @@
+:root {
+    --primary-color: #2563eb;
+    --primary-hover: #1d4ed8;
+    --dark-bg: #1e293b;
+    --light-bg: #f8fafc;
+    --text-main: #0f172a;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 20px; /* Reducido para móviles */
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+    margin: 0;
+}
+
+h1 {
+    text-align: center;
+    color: var(--dark-bg);
+    margin-bottom: 30px;
+    font-weight: 800;
+    font-size: clamp(1.5rem, 5vw, 2.5rem); /* Tamaño fluido según la pantalla */
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones bajen de fila */
+    gap: 12px;
+    margin-bottom: 30px;
+    justify-content: center;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    padding: 12px 20px;
+    background: var(--dark-bg);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow);
+    flex: 1 1 auto; /* Los botones crecen para llenar el ancho */
+    min-width: 160px; /* Evita que se vuelvan demasiado flacos */
+}
+
+button:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+#contenedor {
+    padding: 20px; /* Menos padding en móvil */
+    background: white;
+    border-radius: 12px;
+    min-height: 300px;
+    max-width: 900px;
+    margin: 0 auto;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#contenedor img {
+    max-width: 100%; /* No se sale del contenedor */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: width 0.3s ease;
+}
+
+/* --- SECCIÓN RESPONSIVE --- */
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    .botones {
+        gap: 8px;
+    }
+
+    button {
+        padding: 10px;
+        font-size: 0.9rem;
+        min-width: 140px; /* Se ajustan mejor en pantallas chicas */
+    }
+
+    #contenedor {
+        padding: 15px;
+    }
+}
