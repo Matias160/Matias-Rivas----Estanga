@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punto 2 - POST</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js" defer></script>
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__content">
+      <div>
+        <p class="eyebrow">Punto 2</p>
+        <h1>Formulario con POST</h1>
+      </div>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Cambiar modo">
+        <span id="themeIcon">☀</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Crear usuario</h2>
+      <p>Se envia nombre y email con axios.post() y se muestra el ID de respuesta.</p>
+
+      <form class="form" id="userForm" novalidate>
+        <label>
+          Nombre de usuario (numeros validos)
+          <input id="nameInput" type="text" placeholder="Ej: Ana Lopez" autocomplete="name">
+        </label>
+
+        <label>
+          Email
+          <input id="emailInput" type="email" placeholder="Ej: ana@mail.com" autocomplete="email">
+        </label>
+
+        <div class="form-actions">
+          <button id="submitButton" type="submit">Enviar usuario</button>
+          <button id="clearButton" type="button" disabled>Limpiar</button>
+        </div>
+      </form>
+
+      <p class="message" id="message"></p>
+    </section>
+  </main>
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="Subir">↑</button>
+</body>
+</html>

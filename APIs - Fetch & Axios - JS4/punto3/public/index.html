@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punto 3 - Buscar usuarios</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header__content">
+      <div>
+        <p class="eyebrow">Punto 3</p>
+        <h1>Buscar usuarios</h1>
+      </div>
+      <button class="theme-button" id="themeButton" type="button" aria-label="Cambiar modo">
+        <span id="themeIcon">☀</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Filtro por nombre</h2>
+      <p>Primero se obtienen todos los usuarios y luego se filtra el array en pantalla.</p>
+
+      <div class="actions">
+        <button id="loadButton" type="button">Cargar usuarios</button>
+        <button id="clearButton" type="button" disabled>Borrar datos</button>
+      </div>
+
+      <input class="search" id="searchInput" type="text" placeholder="Escribir un nombre..." disabled>
+      <p class="message" id="message"></p>
+      <div class="grid" id="usersList"></div>
+    </section>
+  </main>
+  <button class="scroll-top" id="scrollTopButton" type="button" aria-label="Subir">↑</button>
+</body>
+</html>
