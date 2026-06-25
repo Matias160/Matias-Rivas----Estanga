@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "node start-all.js",
+    "start:punto1": "npm --prefix punto1 start",
+    "start:punto2": "npm --prefix punto2 start",
+    "start:punto3": "npm --prefix punto3 start",
+    "start:punto4": "npm --prefix punto4 start"
+  }
+}
