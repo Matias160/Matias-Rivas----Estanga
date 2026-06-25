@@ -1,0 +1,15 @@
+{
+  "name": "nj2-corregido",
+  "version": "1.0.0",
+  "description": "Trabajo practico de Node.js: modulos propios, HTTP, File System, URL, NPM y sitio web modular responsive.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "modulos": "node modulesDemo.js",
+    "url": "node urlDemo.js"
+  },
+  "dependencies": {
+    "upper-case": "^2.0.2"
+  }
+}
