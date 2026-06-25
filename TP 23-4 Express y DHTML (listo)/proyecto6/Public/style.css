@@ -1,0 +1,238 @@
+:root {
+    --primary-color: #1e293b;
+    --accent-color: #2563eb;
+    --bg-page: #f8fafc;
+    --border-soft: #e2e8f0;
+    --text-dark: #334155;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-dark);
+    margin: 0;
+    padding: 20px;
+    line-height: 1.5;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1 {
+    text-align: center;
+    font-weight: 800;
+    margin-bottom: 30px;
+}
+
+/* CONTENEDOR FLEX PRINCIPAL */
+.contenedor {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap; /* Clave para el responsive */
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* COLUMNAS (Formulario y Resultado) */
+.formulario, .resultado {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    flex: 1 1 450px; /* Crece, se achica y tiene un base de 450px */
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border-soft);
+    min-width: 320px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    border-bottom: 2px solid var(--bg-page);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* LABELS E INPUTS */
+label {
+    display: block;
+    margin: 15px 0 6px;
+    font-weight: 600;
+    color: #475569;
+}
+
+input[type="text"], 
+input[type="email"], 
+input[type="number"], 
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 2px solid var(--border-soft);
+    border-radius: 8px;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    box-sizing: border-box; /* Evita que el padding rompa el ancho */
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* GRUPOS DE RADIO Y CHECKBOX */
+.radio-grupo, .check-grupo {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    background: #f1f5f9;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: 5px;
+}
+
+.radio-grupo label, .check-grupo label {
+    margin: 0;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* BOTÓN DE REGISTRO Y REINICIAR */
+button {
+    margin-top: 25px;
+    width: 100%;
+    padding: 14px;
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+}
+
+button:hover {
+    background: var(--accent-color);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    background: #94a3b8;
+    color: #e2e8f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+
+button:disabled:hover {
+    background: #94a3b8;
+    color: #e2e8f0;
+    transform: none;
+}
+
+/* ÁREA DE RESULTADO */
+.resultado {
+    border-top: 6px solid var(--accent-color); /* Cambiado de izquierda a arriba para más impacto */
+    display: flex;
+    flex-direction: column;
+}
+
+.dato {
+    padding: 12px;
+    margin: 8px 0;
+    background: #f8fafc;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 15px;
+}
+
+.dato span {
+    font-weight: bold;
+    color: var(--accent-color);
+    display: inline-block;
+    min-width: 80px;
+}
+
+.oculto { display: none; }
+
+/* RESPONSIVE AJUSTE */
+@media (max-width: 768px) {
+    .contenedor { gap: 20px; }
+    .formulario, .resultado { padding: 20px; }
+}
+
+/* =========================================
+   BOTÓN DÍA/NOCHE
+   ========================================= */
+#btn-theme {
+    background: #4f46e5;
+    color: white;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0 auto 15px;
+    box-shadow: var(--shadow);
+    transition: background 0.3s ease, transform 0.2s;
+}
+
+#btn-theme:hover {
+    background: #4338ca;
+    transform: translateY(-2px) rotate(15deg);
+}
+
+/* =========================================
+   MODO OSCURO (DYNAMIC THEME)
+   ========================================= */
+body.dark-mode {
+    --bg-page: #1e1b4b;
+    --text-dark: #f8fafc;
+}
+
+body.dark-mode .formulario,
+body.dark-mode .resultado {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+body.dark-mode h2 {
+    color: #f8fafc;
+}
+
+body.dark-mode label {
+    color: #cbd5e1;
+}
+
+body.dark-mode .radio-grupo,
+body.dark-mode .check-grupo {
+    background: #334155;
+}
+
+body.dark-mode input[type="text"],
+body.dark-mode input[type="email"],
+body.dark-mode input[type="number"],
+body.dark-mode select {
+    background: #0f172a;
+    color: #f8fafc;
+    border-color: #475569;
+}
+
+body.dark-mode .dato {
+    background: #1e293b;
+    border-color: #334155;
+    color: #f8fafc;
+}

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 1 - DOM</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header class="page-header">
+        <h1>Proyecto 1 — Manipulación del DOM</h1>
+        <button id="themeToggle" type="button">🌙 Modo oscuro</button>
+    </header>
+
+    <div class="botones">
+        <button onclick="toggleH1(this)">Agregar H1</button>
+        <button id="btnCambiarTexto" onclick="cambiarTexto()" disabled>Cambiar texto H1</button>
+        <button id="btnCambiarColor" onclick="cambiarColor()" disabled>Cambiar color H1</button>
+        <button onclick="toggleImagen(this)">Agregar Imagen</button>
+        <button id="btnCambiarImagen" onclick="cambiarImagen()" disabled>Cambiar imagen</button>
+        <button id="btnCambiarTamano" onclick="cambiarTamano()" disabled>Cambiar tamaño</button>
+    </div>
+
+    <div id="contenedor"></div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

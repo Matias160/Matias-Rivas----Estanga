@@ -1,0 +1,347 @@
+/* ── VARIABLES GLOBALES ──────────────────────────────────────
+   Define colores y sombras reutilizables en todo el proyecto.
+   Cambiar un valor acá afecta todos los elementos que lo usan.
+──────────────────────────────────────────────────────────── */
+:root {
+    --primary-color: #2563eb;
+    --primary-hover:  #1d4ed8;
+    --dark-bg:        #1e293b;
+    --light-bg:       #f8fafc;
+    --text-main:      #0f172a;
+    --shadow:         0 4px 6px -1px rgb(0 0 0 / 0.1),
+                      0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+/* ── RESET Y BASE ────────────────────────────────────────────
+   Elimina márgenes por defecto del navegador y establece
+   la tipografía, colores y espaciado base de toda la página.
+──────────────────────────────────────────────────────────── */
+* {
+    box-sizing: border-box; /* El padding no agranda el elemento */
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    padding: 24px 16px;          /* vertical | horizontal */
+    background-color: var(--light-bg);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* ── TÍTULO PRINCIPAL ────────────────────────────────────────
+   Centrado y con tamaño fluido: crece entre 1.4rem (móvil)
+   y 2.5rem (escritorio) según el ancho de pantalla con clamp().
+──────────────────────────────────────────────────────────── */
+h1 {
+    text-align: center;
+    color: var(--dark-bg);
+    margin-bottom: 28px;
+    font-weight: 800;
+    font-size: clamp(1.4rem, 5vw, 2.5rem);
+    line-height: 1.2;
+    padding: 0 8px; /* Evita que toque los bordes en móvil */
+}
+
+/* ── CONTENEDOR DE BOTONES ───────────────────────────────────
+   Usa flexbox con wrap para que los botones bajen de fila
+   automáticamente cuando no entran en una sola línea.
+   Centrado horizontalmente con max-width y margin auto.
+──────────────────────────────────────────────────────────── */
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+    justify-content: center;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 8px;
+}
+
+/* ── BOTONES ─────────────────────────────────────────────────
+   flex: 1 1 auto permite que cada botón crezca y se achique
+   según el espacio disponible. min-width evita que queden
+   demasiado angostos en pantallas intermedias.
+──────────────────────────────────────────────────────────── */
+button {
+    padding: 12px 18px;
+    background: var(--dark-bg);
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow);
+    flex: 1 1 auto;
+    min-width: 150px;
+    max-width: 220px; /* Evita que un botón ocupe toda la fila */
+    white-space: nowrap; /* El texto no se parte en dos líneas */
+}
+
+/* Estado hover: cambia color y sube levemente el botón */
+button:hover {
+    background: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* Estado activo: baja el botón al hacer click, da feedback táctil */
+button:active {
+    transform: translateY(0);
+    box-shadow: var(--shadow);
+}
+
+/* ── ÁREA DE CONTENIDO PRINCIPAL ─────────────────────────────
+   Tarjeta centrada donde se muestra el resultado de cada acción.
+   Usa flexbox para centrar el contenido interior vertical
+   y horizontalmente. max-width limita el ancho en pantallas grandes.
+──────────────────────────────────────────────────────────── */
+#contenedor {
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    min-height: 280px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #e2e8f0;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 16px; /* Espacio entre elementos hijos */
+}
+
+/* ── IMÁGENES DENTRO DEL CONTENEDOR ─────────────────────────
+   max-width: 100% evita que la imagen se salga del contenedor.
+   height: auto mantiene la proporción original al redimensionar.
+   transition suaviza el cambio de tamaño cuando se usa JS.
+──────────────────────────────────────────────────────────── */
+#contenedor img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    transition: width 0.3s ease, max-width 0.3s ease;
+    display: block; /* Elimina espacio extra debajo de la imagen */
+}
+
+/* ── H1 DINÁMICO DENTRO DEL CONTENEDOR ──────────────────────
+   El H1 que se agrega por JS hereda estilos pero se ajusta
+   para no romper el layout del contenedor.
+──────────────────────────────────────────────────────────── */
+#contenedor h1 {
+    font-size: clamp(1.2rem, 4vw, 2rem);
+    margin-bottom: 0;
+    word-break: break-word; /* Corta palabras largas en móvil */
+}
+
+/* ══════════════════════════════════════════════════════════
+   MEDIA QUERIES — DISEÑO RESPONSIVO
+   Se aplican estilos específicos según el ancho de pantalla.
+   Enfoque mobile-first: primero móvil, luego pantallas grandes.
+══════════════════════════════════════════════════════════ */
+
+/* ── TABLETS Y PANTALLAS MEDIANAS (max 768px) ────────────────
+   Ajusta espaciados y tamaños para pantallas intermedias
+   como tablets en vertical o celulares grandes.
+──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    body {
+        padding: 16px 12px;
+    }
+
+    .botones {
+        gap: 8px;
+        padding: 0 4px;
+    }
+
+    button {
+        font-size: 0.9rem;
+        padding: 11px 14px;
+        min-width: 130px;
+        max-width: 100%; /* En tablet pueden ocupar más ancho */
+    }
+
+    #contenedor {
+        padding: 20px 16px;
+        min-height: 220px;
+    }
+}
+
+/* ── MÓVILES PEQUEÑOS (max 480px) ────────────────────────────
+   En pantallas muy chicas los botones ocupan el ancho completo
+   para que sean fáciles de tocar con el dedo (touch-friendly).
+──────────────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    body {
+        padding: 12px 8px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+    }
+
+    .botones {
+        flex-direction: column; /* Botones en columna, uno por fila */
+        gap: 8px;
+    }
+
+    button {
+        width: 100%;        /* Ocupa todo el ancho disponible */
+        max-width: 100%;
+        min-width: unset;   /* Cancela el min-width anterior */
+        padding: 14px;      /* Más alto para facilitar el toque */
+        font-size: 1rem;
+    }
+
+    #contenedor {
+        padding: 16px 12px;
+        min-height: 180px;
+        border-radius: 8px;
+    }
+}
+
+/* ── PANTALLAS MUY GRANDES (min 1200px) ──────────────────────
+   En monitores anchos se puede agrandar un poco el contenido
+   para aprovechar mejor el espacio sin que quede demasiado chico.
+──────────────────────────────────────────────────────────── */
+@media (min-width: 1200px) {
+    body {
+        padding: 32px 24px;
+    }
+
+    .botones {
+        gap: 14px;
+        margin-bottom: 32px;
+    }
+
+    button {
+        padding: 13px 22px;
+        font-size: 1rem;
+    }
+
+    #contenedor {
+        padding: 32px;
+        min-height: 320px;
+    }
+}
+
+button:disabled {
+    background: #94a3b8;
+    color: #e2e8f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+
+button:disabled:hover {
+    background: #94a3b8;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ── Variables modo claro (default) ── */
+:root[data-theme="light"] {
+    --bg:       #f8fafc;
+    --text:     #0f172a;
+    --card:     #ffffff;
+    --border:   #e2e8f0;
+    --btn-bg:   #1e293b;
+    --btn-text: #ffffff;
+}
+
+/* ── Variables modo oscuro ── */
+:root[data-theme="dark"] {
+    --bg:       #0f172a;
+    --text:     #e2e8f0;
+    --card:     #1e293b;
+    --border:   #334155;
+    --btn-bg:   #6366f1;
+    --btn-text: #ffffff;
+}
+/* El título principal siempre blanco en modo oscuro */
+:root[data-theme="dark"] .page-header h1 {
+    color: #ffffff;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding: 24px;
+    min-height: 100vh;
+    transition: background .3s, color .3s;
+}
+
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+#themeToggle {
+    background: var(--card);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: .9rem;
+}
+
+#themeToggle:hover {
+    border-color: var(--btn-bg);
+}
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.botones button {
+    padding: 10px 16px;
+    background: var(--btn-bg);
+    color: var(--btn-text);
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: opacity .2s;
+}
+
+.botones button:disabled {
+    opacity: .4;
+    cursor: not-allowed;
+}
+
+#contenedor {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    min-height: 200px;
+    transition: background .3s, border-color .3s;
+}
+
+#contenedor h1 {
+    color: var(--text);
+}
+
+#contenedor img {
+    transition: width .3s ease;
+}

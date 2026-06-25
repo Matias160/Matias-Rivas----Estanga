@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 4 - Nodos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Proyecto 4 — Nodos y atributos</h1>
+<div class="botones">
+    <button id="btnCrearNodos" onclick="crearNodos()">Crear 5 nodos &lt;a&gt;</button>
+    <button id="btnLink0" onclick="modificarNodo(0, 'https://openai.com')" disabled>Cambiar link 1</button>
+    <button id="btnLink1" onclick="modificarNodo(1, 'https://github.com')" disabled>Cambiar link 2</button>
+    <button id="btnLink2" onclick="modificarNodo(2, 'https://mozilla.org')" disabled>Cambiar link 3</button>
+    <button id="btnLink3" onclick="modificarNodo(3, 'https://nodejs.org')" disabled>Cambiar link 4</button>
+    <button id="btnLink4" onclick="modificarNodo(4, 'https://expressjs.com')" disabled>Cambiar link 5</button>
+    <button id="btnReiniciar" onclick="reiniciarProyecto()" disabled>Reiniciar</button>
+
+    <button id="btn-theme" title="Cambiar tema">🌙</button>
+</div>
+
+    <div id="links"></div>
+    <div id="log"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>

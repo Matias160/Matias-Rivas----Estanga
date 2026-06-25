@@ -1,0 +1,18 @@
+{
+  "type": "module",
+  "scripts": {
+    "start": "concurrently \"node proyecto1/server.js\" \"node proyecto2/server.js\" \"node proyecto3/server.js\" \"node proyecto4/server.js\" \"node proyecto5/server.js\" \"node proyecto6/server.js\"",
+    "proyecto1": "node proyecto1/server.js",
+    "proyecto2": "node proyecto2/server.js",
+    "proyecto3": "node proyecto3/server.js",
+    "proyecto4": "node proyecto4/server.js",
+    "proyecto5": "node proyecto5/server.js",
+    "proyecto6": "node proyecto6/server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
