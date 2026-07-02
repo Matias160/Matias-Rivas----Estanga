@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punto 2 | Catalogo dinamico</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button class="theme-toggle" type="button" data-theme-toggle>Dia / noche</button>
+
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">// Modulo 02</p>
+      <h1>Catalogo dinamico</h1>
+      <p>Formulario de 8 campos para cargar articulos, mostrarlos en pantalla y almacenarlos en un array con distintos metodos.</p>
+    </header>
+
+    <section class="panel form-panel">
+      <div class="section-title">
+        <p class="eyebrow">// Formulario</p>
+        <h2>Nuevo articulo</h2>
+      </div>
+
+      <form data-product-form novalidate>
+        <label>Nombre
+          <input name="nombre" type="text" maxlength="60" placeholder="Ej: Pelota de futbol" />
+          <small data-error="nombre"></small>
+        </label>
+
+        <label>Categoria
+          <select name="categoria">
+            <option value="">Seleccionar</option>
+            <option value="Deportes">Deportes</option>
+            <option value="Herramientas">Herramientas</option>
+            <option value="Electronica">Electronica</option>
+            <option value="Ropa">Ropa</option>
+            <option value="Hogar">Hogar</option>
+            <option value="Juguetes">Juguetes</option>
+          </select>
+          <small data-error="categoria"></small>
+        </label>
+
+        <label>Precio (en pesos)
+          <input name="precio" type="number" min="0" step="0.01" placeholder="Ej: 12500" />
+          <small data-error="precio"></small>
+        </label>
+
+        <label>Stock
+          <input name="stock" type="number" min="0" step="1" placeholder="Ej: 20" />
+          <small data-error="stock"></small>
+        </label>
+
+        <label>Marca
+          <input name="marca" type="text" maxlength="40" placeholder="Ej: Adidas" />
+          <small data-error="marca"></small>
+        </label>
+
+        <label>Estado
+          <select name="estado">
+            <option value="">Seleccionar</option>
+            <option value="Nuevo">Nuevo</option>
+            <option value="Usado excelente">Usado excelente</option>
+            <option value="Usado bueno">Usado bueno</option>
+          </select>
+          <small data-error="estado"></small>
+        </label>
+
+        <label>Envio
+          <select name="envio">
+            <option value="">Seleccionar</option>
+            <option value="Si">Si</option>
+            <option value="No">No</option>
+            <option value="Consultar">Consultar</option>
+          </select>
+          <small data-error="envio"></small>
+        </label>
+
+        <label>Descripcion
+          <textarea name="descripcion" maxlength="160" rows="3" placeholder="Descripcion breve"></textarea>
+          <small data-error="descripcion"></small>
+        </label>
+
+        <div class="method-box">
+          <span>Metodo de almacenaje</span>
+          <div class="segmented">
+            <button type="button" class="active" data-storage="push">push</button>
+            <button type="button" data-storage="spread">spread</button>
+            <button type="button" data-storage="concat">concat</button>
+          </div>
+        </div>
+
+        <button class="primary" type="submit">Agregar al catalogo</button>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="section-title inline">
+        <div>
+          <p class="eyebrow">// Catalogo</p>
+          <h2>Articulos cargados</h2>
+        </div>
+        <span class="pill" data-count>0 articulos</span>
+      </div>
+      <div class="cards" data-product-list>
+        <p class="empty">Todavia no hay articulos.</p>
+      </div>
+    </section>
+
+    <section class="panel console-panel">
+      <div class="section-title inline">
+        <div>
+          <p class="eyebrow">// Consola</p>
+          <h2>Array y metodo usado</h2>
+        </div>
+        <span class="pill" data-active-storage>push</span>
+      </div>
+      <pre data-console></pre>
+    </section>
+  </main>
+
+  <div class="toast" data-toast></div>
+  <script src="script.js"></script>
+</body>
+</html>

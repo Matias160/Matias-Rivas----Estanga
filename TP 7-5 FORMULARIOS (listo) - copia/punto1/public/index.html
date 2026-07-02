@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punto 1 | Lectura de formularios</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button class="theme-toggle" type="button" data-theme-toggle>Dia / noche</button>
+
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">// Modulo 01</p>
+      <h1>Usuarios dinamicos</h1>
+      <p>Alta de usuarios sin recargar la pagina y demostracion de 3 formas de lectura de formularios en JavaScript.</p>
+    </header>
+
+    <section class="panel form-panel">
+      <div class="section-title">
+        <p class="eyebrow">// Formulario</p>
+        <h2>Nuevo usuario</h2>
+      </div>
+
+      <form data-user-form novalidate>
+        <label>Nombre completo
+          <input name="nombre" type="text" maxlength="60" placeholder="Ej: Lucia Perez" autocomplete="off" />
+          <small data-error="nombre"></small>
+        </label>
+
+        <label>Usuario
+          <input name="usuario" type="text" maxlength="20" placeholder="Ej: lucia_p" />
+          <small data-error="usuario"></small>
+        </label>
+
+        <label>Email
+          <input name="email" type="email" placeholder="lucia@email.com" />
+          <small data-error="email"></small>
+        </label>
+
+        <label>Rol
+          <select name="rol">
+            <option value="">Seleccionar</option>
+            <option value="Lector">Lector</option>
+            <option value="Blogger">Blogger</option>
+            <option value="Moderador">Moderador</option>
+            <option value="Admin">Admin</option>
+          </select>
+          <small data-error="rol"></small>
+        </label>
+
+        <div class="method-box">
+          <span>Metodo de lectura</span>
+          <div class="segmented">
+            <button type="button" class="active" data-method="query">querySelector</button>
+            <button type="button" data-method="formdata">FormData</button>
+            <button type="button" data-method="elements">form.elements</button>
+          </div>
+        </div>
+
+        <button class="primary" type="submit">Agregar usuario</button>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="section-title inline">
+        <div>
+          <p class="eyebrow">// Lista</p>
+          <h2>Usuarios cargados</h2>
+        </div>
+        <span class="pill" data-count>0 usuarios</span>
+      </div>
+
+      <div class="cards" data-user-list>
+        <p class="empty">Todavia no hay usuarios cargados.</p>
+      </div>
+    </section>
+
+    <section class="panel console-panel">
+      <div class="section-title inline">
+        <div>
+          <p class="eyebrow">// Consola</p>
+          <h2>Lectura ejecutada</h2>
+        </div>
+        <span class="pill" data-active-method>querySelector</span>
+      </div>
+      <pre data-console></pre>
+    </section>
+  </main>
+
+  <div class="toast" data-toast></div>
+  <script src="script.js"></script>
+</body>
+</html>

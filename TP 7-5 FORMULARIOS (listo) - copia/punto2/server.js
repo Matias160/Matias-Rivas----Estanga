@@ -1,0 +1,11 @@
+import express from "express";
+
+// Servidor estatico sin require y sin rutas GET propias.
+const app = express();
+const PORT = 3002;
+
+app.use(express.static("public"));
+
+app.listen(PORT, () => {
+  console.log(`Punto 2 disponible en http://localhost:${PORT}`);
+});

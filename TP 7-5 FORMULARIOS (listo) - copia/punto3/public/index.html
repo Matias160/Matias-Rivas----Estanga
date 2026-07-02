@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Punto 3 | Almacen de personas</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button class="theme-toggle" type="button" data-theme-toggle>Dia / noche</button>
+
+  <main class="shell">
+    <header class="hero">
+      <p class="eyebrow">// Modulo 03</p>
+      <h1>Almacen de personas</h1>
+      <p>Formulario validado con JavaScript, guardado en localStorage y listado dinamico de nombres completos.</p>
+    </header>
+
+    <section class="panel form-panel">
+      <div class="section-title">
+        <p class="eyebrow">// Formulario</p>
+        <h2>Nueva persona</h2>
+      </div>
+
+      <form data-person-form novalidate>
+        <label>Nombre<input name="nombre" type="text" maxlength="40" autocomplete="off" /><small data-error="nombre"></small></label>
+        <label>Apellido<input name="apellido" type="text" maxlength="40" autocomplete="off" /><small data-error="apellido"></small></label>
+        <label>Edad<input name="edad" type="number" min="0" max="120" /><small data-error="edad"></small></label>
+        <label>Fecha de nacimiento<input name="fechaNacimiento" type="date" /><small data-error="fechaNacimiento"></small></label>
+
+        <fieldset>
+          <legend>Sexo</legend>
+          <label class="option"><input name="sexo" type="radio" value="Masculino" /> Masculino</label>
+          <label class="option"><input name="sexo" type="radio" value="Femenino" /> Femenino</label>
+          <small data-error="sexo"></small>
+        </fieldset>
+
+        <label>Documento<input name="documento" type="text" maxlength="10" placeholder="Ej: 38456789" /><small data-error="documento"></small></label>
+        <label>Estado civil
+          <select name="estadoCivil">
+            <option value="">Seleccionar</option>
+            <option value="Soltero/a">Soltero/a</option>
+            <option value="Casado/a">Casado/a</option>
+            <option value="Divorciado/a">Divorciado/a</option>
+            <option value="Viudo/a">Viudo/a</option>
+            <option value="Union convivencial">Union convivencial</option>
+          </select>
+          <small data-error="estadoCivil"></small>
+        </label>
+        <label>Nacionalidad
+          <select name="nacionalidad">
+            <option value="">Seleccionar pais</option>
+            <option value="Argentina">Argentina</option>
+            <option value="Bolivia">Bolivia</option>
+            <option value="Brasil">Brasil</option>
+            <option value="Chile">Chile</option>
+            <option value="Colombia">Colombia</option>
+            <option value="Ecuador">Ecuador</option>
+            <option value="Guyana">Guyana</option>
+            <option value="Paraguay">Paraguay</option>
+            <option value="Peru">Peru</option>
+            <option value="Surinam">Surinam</option>
+            <option value="Uruguay">Uruguay</option>
+            <option value="Venezuela">Venezuela</option>
+          </select>
+          <small data-error="nacionalidad"></small>
+        </label>
+        <label>Telefono<input name="telefono" type="tel" maxlength="20" /><small data-error="telefono"></small></label>
+        <label>Mail<input name="mail" type="email" maxlength="100" /><small data-error="mail"></small></label>
+
+        <fieldset>
+          <legend>Hijos</legend>
+          <label class="option"><input name="tieneHijos" type="radio" value="Si" /> Si</label>
+          <label class="option"><input name="tieneHijos" type="radio" value="No" /> No</label>
+          <small data-error="tieneHijos"></small>
+        </fieldset>
+
+        <label class="hidden" data-children-field>Cantidad de hijos
+          <input name="cantidadHijos" type="number" min="1" max="20" />
+          <small data-error="cantidadHijos"></small>
+        </label>
+
+        <button class="primary" type="submit">Guardar persona</button>
+        <button class="secondary" type="button" data-clear>Vaciar localStorage</button>
+      </form>
+    </section>
+
+    <section class="panel list-panel">
+      <div class="section-title inline">
+        <div>
+          <p class="eyebrow">// LocalStorage</p>
+          <h2>Personas almacenadas</h2>
+        </div>
+        <span class="pill" data-count>0 personas</span>
+      </div>
+
+      <div class="cards" data-person-list>
+        <p class="empty">Todavia no hay personas guardadas.</p>
+      </div>
+    </section>
+
+    <section class="panel console-panel">
+      <div class="section-title inline">
+        <div>
+          <p class="eyebrow">// Consola</p>
+          <h2>Datos en localStorage</h2>
+        </div>
+        <span class="pill">personasTP75</span>
+      </div>
+      <pre data-console></pre>
+    </section>
+  </main>
+
+  <div class="toast" data-toast></div>
+  <script src="script.js"></script>
+</body>
+</html>
