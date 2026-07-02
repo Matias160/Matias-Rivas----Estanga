@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punto 1 | Carga de numeros</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar modo dia o noche">
+      <span>Dia / noche</span>
+    </button>
+
+    <main class="container">
+      <header class="header">
+        <p class="eyebrow">// Modulo 01</p>
+        <h1>Carga de numeros</h1>
+        <p>
+          Ingresa entre 10 y 20 numeros enteros positivos. Se muestran a medida que los cargas
+          y al finalizar se genera un archivo TXT.
+        </p>
+      </header>
+
+      <section class="panel input-panel" aria-label="Formulario de carga">
+        <div class="section-title">
+          <p class="eyebrow">// Ingreso</p>
+          <h2>Nuevo numero</h2>
+        </div>
+
+        <form id="formNumero" novalidate>
+          <label class="field-label" for="inputNumero">Numero entero positivo</label>
+
+          <div class="input-row">
+            <input
+              id="inputNumero"
+              class="input"
+              type="number"
+              name="numero"
+              min="0"
+              step="1"
+              required
+              placeholder="Ej: 525"
+              autocomplete="off"
+              aria-describedby="inputError inputCounter"
+            />
+            <button id="btnAgregar" class="btn btn--primary" type="submit">
+              Agregar
+            </button>
+          </div>
+
+          <p id="inputError" class="input-error" role="alert" aria-live="polite"></p>
+        </form>
+
+        <div class="progress-area">
+          <div class="progress-header">
+            <span id="inputCounter">0 / 20 cargados</span>
+            <span id="progressMin">Minimo: 10</span>
+          </div>
+          <div class="progress-bar" role="progressbar" aria-valuemin="0" aria-valuemax="20" aria-valuenow="0">
+            <div id="progressFill" class="progress-bar__fill"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button id="btnDescargar" class="btn btn--accent btn--full" type="button" disabled>
+            Guardar numeros como TXT
+          </button>
+          <button id="btnLimpiar" class="btn btn--ghost btn--full" type="button" disabled>
+            Limpiar lista
+          </button>
+        </div>
+
+        <p class="actions__hint" id="hintDescargar">
+          Ingresa al menos 10 numeros para habilitar la descarga.
+        </p>
+      </section>
+
+      <section class="panel list-panel" aria-label="Numeros cargados">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">// Vista previa</p>
+            <h2>Numeros cargados</h2>
+          </div>
+          <span class="hint">maximo 20</span>
+        </div>
+
+        <div id="listaNumeros" class="numeros-grid" aria-live="polite" aria-label="Lista de numeros">
+          <p class="numeros-empty" id="emptyMsg">Todavia no ingresaste ningun numero.</p>
+        </div>
+      </section>
+
+      <section class="panel console-panel" aria-label="Consola del archivo generado">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">// Consola</p>
+            <h2>Array y archivo generado</h2>
+          </div>
+          <span class="hint">backend + TXT</span>
+        </div>
+
+        <pre id="consoleOutput" class="console-output" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Punto 2 | Filtrado de numeros</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Cambiar modo dia o noche">
+      <span>Dia / noche</span>
+    </button>
+
+    <main class="container">
+      <header class="header">
+        <p class="eyebrow">// Modulo 02</p>
+        <h1>Filtrado de numeros</h1>
+        <p>
+          Subi el archivo TXT del punto 1. El sistema lee los numeros, filtra los que empiezan y
+          terminan con el mismo digito, calcula porcentajes y genera un nuevo TXT.
+        </p>
+      </header>
+
+      <section class="panel upload-panel" aria-label="Subir archivo TXT">
+        <div class="section-title">
+          <p class="eyebrow">// Archivo</p>
+          <h2>Cargar TXT</h2>
+        </div>
+
+        <form id="formUpload" novalidate>
+          <label class="dropzone" id="dropzone" for="inputArchivo" tabindex="0">
+            <span class="dropzone__icon">TXT</span>
+            <strong>Seleccionar archivo</strong>
+            <small>Tambien podes arrastrarlo aca</small>
+            <input
+              id="inputArchivo"
+              class="dropzone__input"
+              type="file"
+              name="archivo"
+              accept=".txt,text/plain"
+              required
+              aria-label="Seleccionar archivo TXT"
+            />
+          </label>
+
+          <p id="archivoNombre" class="archivo-nombre" aria-live="polite"></p>
+          <p id="uploadError" class="input-error" role="alert" aria-live="polite"></p>
+
+          <button id="btnProcesar" class="btn btn--primary btn--full" type="submit" disabled>
+            Procesar archivo
+          </button>
+        </form>
+
+        <div id="loader" class="loader" hidden aria-label="Procesando" aria-live="polite">
+          <div class="loader__spinner"></div>
+          <span>Procesando archivo...</span>
+        </div>
+      </section>
+
+      <section id="secResultados" class="results-area" hidden aria-label="Resultados del filtrado">
+        <div class="metricas" id="metricas">
+          <article class="metrica-card">
+            <span>Total leidos</span>
+            <strong id="metTotal">0</strong>
+          </article>
+          <article class="metrica-card metrica-card--utiles">
+            <span>Utiles</span>
+            <strong id="metUtiles">0</strong>
+          </article>
+          <article class="metrica-card metrica-card--noutiles">
+            <span>No utiles</span>
+            <strong id="metNoUtiles">0</strong>
+          </article>
+          <article class="metrica-card metrica-card--porcentaje">
+            <span>% utiles</span>
+            <strong id="metPorcentaje">0%</strong>
+          </article>
+        </div>
+
+        <div class="pct-bar-wrapper">
+          <div class="pct-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="Porcentaje de numeros utiles">
+            <div id="pctBarFill" class="pct-bar__fill"></div>
+          </div>
+          <span id="pctBarLabel" class="pct-bar__label">0%</span>
+        </div>
+
+        <section class="panel card--results">
+          <div class="results-header">
+            <div>
+              <p class="eyebrow">// Resultado</p>
+              <h2>Numeros utiles ordenados <span class="badge" id="utilesBadge">0</span></h2>
+            </div>
+            <span class="hint">primer digito = ultimo digito</span>
+          </div>
+
+          <div id="listaUtiles" class="numeros-grid" aria-live="polite">
+            <p class="numeros-empty">Sin resultados.</p>
+          </div>
+        </section>
+
+        <section class="panel card--results">
+          <div class="results-header">
+            <div>
+              <p class="eyebrow">// Factoriales</p>
+              <h2>Numeros factoriales <span class="badge" id="factorialesBadge">0</span></h2>
+            </div>
+            <span class="hint">1, 2, 6, 24, 120...</span>
+          </div>
+
+          <div id="listaFactoriales" class="numeros-grid" aria-live="polite">
+            <p class="numeros-empty">Sin factoriales.</p>
+          </div>
+        </section>
+
+        <button id="btnExportar" class="btn btn--accent btn--full" type="button" disabled>
+          Guardar resultado como TXT
+        </button>
+      </section>
+
+      <section class="panel console-panel" aria-label="Consola del procesamiento">
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">// Consola</p>
+            <h2>Lectura, filtro y guardado</h2>
+          </div>
+          <span class="hint">backend + TXT + JSON</span>
+        </div>
+
+        <pre id="consoleOutput" class="console-output" aria-live="polite"></pre>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

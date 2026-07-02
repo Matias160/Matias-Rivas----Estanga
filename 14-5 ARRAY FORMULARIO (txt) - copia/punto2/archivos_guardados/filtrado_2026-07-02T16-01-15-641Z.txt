@@ -1,0 +1,22 @@
+Resultado del filtrado - 2/7/2026, 01:01:15
+========================================
+Total de numeros leidos: 15
+Numeros utiles: 9
+Numeros no utiles: 6
+Porcentaje utiles: 60.00%
+
+Numeros utiles ordenados:
+6
+7
+22
+44
+101
+333
+525
+808
+1001
+
+Numeros factoriales:
+6
+24
+120
