@@ -38,6 +38,8 @@ function clearStudents() {
 }
 
 // Obtiene alumnos desde la API local.
+// La ruta /api/alumnos pertenece al servidor Node de este mismo punto.
+// El frontend usa fetch para pedir esos datos y luego los muestra en pantalla.
 async function loadStudents() {
   try {
     showMessage('Cargando alumnos...');

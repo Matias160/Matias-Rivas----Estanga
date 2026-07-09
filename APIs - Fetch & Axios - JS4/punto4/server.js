@@ -9,6 +9,10 @@ const __dirname = path.dirname(__filename);
 const publicPath = path.join(__dirname, 'public');
 const alumnosPath = path.join(__dirname, 'alumnos.json');
 
+// Este servidor cumple dos funciones:
+// 1. Servir los archivos del frontend que estan en la carpeta public.
+// 2. Crear una API local propia en la ruta /api/alumnos.
+
 // Define el tipo de archivo que se envia al navegador.
 function getContentType(filePath) {
   const extension = path.extname(filePath);
@@ -22,12 +26,14 @@ function getContentType(filePath) {
 }
 
 // Envia respuestas JSON desde la API local.
+// Se usa para responder /api/alumnos con datos en formato JSON.
 function sendJson(response, statusCode, data) {
   response.writeHead(statusCode, { 'Content-Type': 'application/json; charset=utf-8' });
   response.end(JSON.stringify(data));
 }
 
 // Lee los alumnos desde un archivo JSON para no dejarlos escritos dentro del servidor.
+// Esto evita hardcodear los datos en server.js y deja la informacion separada.
 function sendStudents(response) {
   fs.readFile(alumnosPath, 'utf8', (error, content) => {
     if (error) {
@@ -40,6 +46,8 @@ function sendStudents(response) {
 }
 
 // Sirve los archivos del punto 4.
+// Si se entra a /, devuelve index.html.
+// Si se pide /style.css o /script.js, devuelve esos archivos desde public.
 function serveStaticFile(request, response, pathname) {
   const requestedPath = pathname === '/' ? '/index.html' : pathname;
   const filePath = path.join(publicPath, requestedPath);
@@ -65,11 +73,14 @@ function serveStaticFile(request, response, pathname) {
 const server = http.createServer((request, response) => {
   const { pathname } = new URL(request.url, `http://${request.headers.host}`);
 
+  // Ruta de la API local.
+  // Solo responde cuando la URL es /api/alumnos y el metodo es GET.
   if (pathname === '/api/alumnos' && request.method === 'GET') {
     sendStudents(response);
     return;
   }
 
+  // Si no es una ruta de API, se intenta servir un archivo del frontend.
   serveStaticFile(request, response, pathname);
 });
 

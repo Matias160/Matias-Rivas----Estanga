@@ -1,4 +1,4 @@
-// URL de la API publica para obtener todos los usuarios.
+// API publica usada para obtener todos los usuarios una sola vez.
 const USERS_API_URL = 'https://jsonplaceholder.typicode.com/users';
 
 const loadButton = document.getElementById('loadButton');
@@ -10,6 +10,7 @@ const themeButton = document.getElementById('themeButton');
 const themeIcon = document.getElementById('themeIcon');
 const scrollTopButton = document.getElementById('scrollTopButton');
 
+// Este array guarda la respuesta completa para poder filtrar sin pedir la API otra vez.
 let users = [];
 
 // Muestra mensajes informativos.
@@ -57,7 +58,8 @@ function clearUsers() {
   updateControls(false);
 }
 
-// Obtiene todos los usuarios una sola vez.
+// Obtiene todos los usuarios una sola vez con fetch.
+// Despues se guardan en el array users para que la busqueda sea local.
 async function loadUsers() {
   try {
     showMessage('Cargando usuarios...');
@@ -80,6 +82,9 @@ async function loadUsers() {
 }
 
 // Filtra por nombre mientras se escribe.
+// trim() limpia espacios al principio y al final.
+// toLowerCase() permite buscar sin importar mayusculas o minusculas.
+// includes() revisa si el nombre contiene el texto escrito.
 function filterUsers() {
   if (users.length === 0) {
     showMessage('Primero cargue los usuarios.', 'error');

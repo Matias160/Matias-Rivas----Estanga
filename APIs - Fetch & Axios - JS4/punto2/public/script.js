@@ -1,5 +1,6 @@
-// URL de la API publica que devuelve un ID al crear un usuario.
-const USERS_API_URL = 'https://jsonplaceholder.typicode.com/users';
+// API local creada en el backend del punto 2.
+// Esta ruta guarda el usuario en usuarios.json y devuelve el usuario creado con ID.
+const USERS_API_URL = '/api/usuarios';
 
 const form = document.getElementById('userForm');
 const nameInput = document.getElementById('nameInput');
@@ -18,13 +19,15 @@ function showMessage(text, type = '') {
 }
 
 // Valida una estructura simple de email.
+// Revisa que exista texto antes y despues de @, y tambien un punto final.
 function isValidEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
 // Valida que el nombre tenga solo letras y espacios.
+// Los escapes Unicode representan vocales con tilde y la letra enie.
 function isValidName(name) {
-  return /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/.test(name);
+  return /^[A-Za-z\u00c1\u00c9\u00cd\u00d3\u00da\u00e1\u00e9\u00ed\u00f3\u00fa\u00d1\u00f1\s]+$/.test(name);
 }
 
 // Vuelve el formulario al estado inicial.
@@ -36,13 +39,16 @@ function clearForm() {
 }
 
 // Reactiva el envio si el usuario modifica los datos.
+// Tambien elimina numeros del campo nombre mientras se escribe.
 function enableSubmit() {
   nameInput.value = nameInput.value.replace(/[0-9]/g, '');
   submitButton.disabled = false;
   clearButton.disabled = false;
 }
 
-// Envia el formulario con axios.post().
+// Envia el formulario con axios.post() a la API local.
+// Antes de enviar se validan nombre y email para evitar datos incorrectos.
+// La respuesta trae el ID real guardado en usuarios.json dentro de response.data.id.
 async function sendUser(event) {
   event.preventDefault();
 
@@ -81,14 +87,8 @@ async function sendUser(event) {
 // Activa el modo dia/noche.
 function toggleTheme() {
   document.body.classList.toggle('dark');
-  themeIcon.textContent = document.body.classList.contains('dark') ? '☾' : '☀';
+  themeIcon.textContent = document.body.classList.contains('dark') ? 'N' : 'D';
 }
-
-form.addEventListener('submit', sendUser);
-nameInput.addEventListener('input', enableSubmit);
-emailInput.addEventListener('input', enableSubmit);
-clearButton.addEventListener('click', clearForm);
-themeButton.addEventListener('click', toggleTheme);
 
 // Muestra el boton flotante cuando la pagina esta desplazada.
 function toggleScrollButton() {
@@ -100,5 +100,10 @@ function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
+form.addEventListener('submit', sendUser);
+nameInput.addEventListener('input', enableSubmit);
+emailInput.addEventListener('input', enableSubmit);
+clearButton.addEventListener('click', clearForm);
+themeButton.addEventListener('click', toggleTheme);
 scrollTopButton.addEventListener('click', scrollToTop);
 window.addEventListener('scroll', toggleScrollButton);

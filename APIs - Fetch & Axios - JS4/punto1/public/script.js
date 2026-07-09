@@ -1,4 +1,5 @@
-// URL de la API publica para obtener usuarios.
+// API publica usada en el trabajo.
+// JSONPlaceholder devuelve usuarios falsos de prueba con campos como name y email.
 const USERS_API_URL = 'https://jsonplaceholder.typicode.com/users';
 
 const fetchButton = document.getElementById('fetchButton');
@@ -48,6 +49,9 @@ function clearUsers() {
 }
 
 // Obtiene usuarios usando fetch.
+// fetch es nativo del navegador: no necesita librerias externas.
+// Primero devuelve un objeto Response, por eso se revisa response.ok.
+// Despues se convierte manualmente la respuesta con response.json().
 async function loadWithFetch() {
   try {
     showMessage('Cargando usuarios con fetch...');
@@ -71,6 +75,8 @@ async function loadWithFetch() {
 }
 
 // Obtiene usuarios usando axios.
+// axios viene desde el CDN agregado en el HTML.
+// A diferencia de fetch, axios ya transforma el JSON y lo deja en response.data.
 async function loadWithAxios() {
   try {
     showMessage('Cargando usuarios con axios...');
