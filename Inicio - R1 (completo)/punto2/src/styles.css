@@ -1,0 +1,102 @@
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  color: #1f2937;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
+.app {
+  min-height: 100vh;
+  padding: 2rem;
+  background: linear-gradient(135deg, #eef6ff, #fff1e8);
+  color: #1f2937;
+}
+
+.app[data-theme="dark"] {
+  background: linear-gradient(135deg, #111827, #2a1f33);
+  color: #f8fafc;
+}
+
+.page-shell {
+  width: min(100%, 1200px);
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+}
+
+.glass {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.34);
+  box-shadow: 0 24px 70px rgba(15, 23, 42, 0.18);
+  backdrop-filter: blur(18px);
+}
+
+.app[data-theme="dark"] .glass {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(17, 24, 39, 0.58);
+}
+
+.card {
+  min-height: 72vh;
+  display: grid;
+  grid-template-columns: minmax(220px, 360px) 1fr;
+  align-items: center;
+  gap: 2rem;
+  padding: clamp(1.5rem, 5vw, 4rem);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.34);
+}
+
+.tag {
+  color: #2563eb;
+  font-weight: 800;
+}
+
+h1 {
+  margin: 0.8rem 0;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  letter-spacing: 0;
+}
+
+p {
+  font-size: 1.2rem;
+}
+
+.primary-button {
+  min-height: 2.75rem;
+  justify-self: end;
+  padding: 0 1rem;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-weight: 800;
+}
+
+@media (max-width: 700px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .card {
+    grid-template-columns: 1fr;
+  }
+}
