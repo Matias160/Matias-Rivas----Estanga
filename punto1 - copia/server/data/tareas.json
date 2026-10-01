@@ -1,0 +1,26 @@
+[
+  {
+    "id": "e0235da3-c08c-46b2-aaba-3c775217ac53",
+    "titulo": "ir a la cancha",
+    "categoria": "recreacion",
+    "prioridad": "alta",
+    "completada": true,
+    "creadaEn": "2026-10-01T21:04:04.006Z"
+  },
+  {
+    "id": "1aa3bf0d-f0ec-44b2-a09d-b855ee6ab591",
+    "titulo": "Hola",
+    "categoria": "sixeven",
+    "prioridad": "baja",
+    "completada": false,
+    "creadaEn": "2026-10-01T20:44:46.870Z"
+  },
+  {
+    "id": "tarea-inicial",
+    "titulo": "Completar el trabajo practico",
+    "categoria": "Estudio",
+    "prioridad": "alta",
+    "completada": false,
+    "creadaEn": "2026-10-01T00:00:00.000Z"
+  }
+]
