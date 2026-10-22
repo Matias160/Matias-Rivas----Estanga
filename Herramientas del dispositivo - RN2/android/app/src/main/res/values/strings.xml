@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Herramientas del dispositivo - RN2</string>
+    <string name="title_activity_main">Herramientas del dispositivo - RN2</string>
+    <string name="package_name">com.rn2.devicehub</string>
+    <string name="custom_url_scheme">com.rn2.devicehub</string>
+</resources>
